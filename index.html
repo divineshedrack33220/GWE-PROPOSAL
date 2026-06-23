@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>CEION Solar Operations — Persistent Fleet Monitoring Platform</title>
+<title>GWE — Persistent Solar Fleet Monitoring Platform</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
   --ink: #0F172A;
   --ink-soft: #1E293B;
-  --ink-muted: #334155;
   --sky: #0EA5E9;
   --sky-bright: #38BDF8;
   --sky-pale: #E0F2FE;
@@ -823,14 +822,14 @@ tbody tr:nth-child(even) { background: var(--paper-cool); }
 <!-- ==================== COVER ==================== -->
 <div class="cover">
   <div class="cover-badge">System Operational</div>
-  <div class="cover-org">CEION Solar Operations</div>
-  <h1>Persistent Fleet<br><span class="accent">Monitoring Platform</span></h1>
+  <div class="cover-org">GWE — Green World Energy</div>
+  <h1>Persistent Solar Fleet<br><span class="accent">Monitoring Platform</span></h1>
   <p class="cover-subtitle">Operational status, system architecture, and deployment readiness — June 2026</p>
 
   <div class="cover-meta">
     <div class="meta-item">
       <div class="meta-label">Prepared For</div>
-      <div class="meta-value">CEION Operations & Abara Advisory</div>
+      <div class="meta-value">GWE Operations & Abara Advisory</div>
     </div>
     <div class="meta-item">
       <div class="meta-label">Engineering Lead</div>
@@ -854,7 +853,7 @@ tbody tr:nth-child(even) { background: var(--paper-cool); }
     <h2>Executive Summary</h2>
   </div>
 
-  <p class="lead">CEION operates solar generation assets across multiple locations and site areas. The existing monitoring infrastructure provides real-time visibility but lacks data persistence — every session begins from zero, with no historical record, no trend baseline, and no operational accountability across the fleet.</p>
+  <p class="lead">GWE operates solar generation assets across multiple locations and site areas. The existing monitoring infrastructure provides real-time visibility but lacks data persistence — every session begins from zero, with no historical record, no trend baseline, and no operational accountability across the fleet.</p>
 
   <p><strong>The system is built and operational.</strong> Solarman API integration is live. The sync engine is running. Data is persisting to MongoDB. The dashboard is rendering real-time and historical views. This document reports current system status, technical architecture, performance metrics, and the path to full fleet deployment.</p>
 
@@ -885,7 +884,7 @@ tbody tr:nth-child(even) { background: var(--paper-cool); }
     <h2>Operational Gap Analysis</h2>
   </div>
 
-  <p class="lead">The current state creates five critical operational deficiencies that prevent CEION from managing the fleet as a unified operational system.</p>
+  <p class="lead">The current state creates five critical operational deficiencies that prevent GWE from managing the fleet as a unified operational system.</p>
 
   <div class="ascii-box">
 <span class="a-title">Current State — Ephemeral Data Flow</span>
@@ -945,7 +944,7 @@ tbody tr:nth-child(even) { background: var(--paper-cool); }
     <h2>System Architecture</h2>
   </div>
 
-  <p class="lead">The platform introduces a persistent data layer between CEION's generation assets and operational dashboards. Data is captured once, normalized, stored, and made available for real-time monitoring and historical analysis simultaneously.</p>
+  <p class="lead">The platform introduces a persistent data layer between GWE's generation assets and operational dashboards. Data is captured once, normalized, stored, and made available for real-time monitoring and historical analysis simultaneously.</p>
 
   <div class="ascii-box">
 <span class="a-title">Target State — Persistent Data Architecture</span>
@@ -1154,7 +1153,7 @@ tbody tr:nth-child(even) { background: var(--paper-cool); }
       </thead>
       <tbody>
         <tr><td>stationId</td><td>Number</td><td>12345</td><td>Solarman API</td></tr>
-        <tr><td>name</td><td>String</td><td>"CEION Site A"</td><td>Solarman API</td></tr>
+        <tr><td>name</td><td>String</td><td>"GWE Site A"</td><td>Solarman API</td></tr>
         <tr><td>installedCapacity</td><td>Number (W)</td><td>50000</td><td>Solarman API</td></tr>
         <tr><td>networkStatus</td><td>String</td><td>"ONLINE"</td><td>Solarman API</td></tr>
         <tr><td>generationPower</td><td>Number (W)</td><td>45200</td><td>Real-time endpoint</td></tr>
@@ -1177,10 +1176,10 @@ tbody tr:nth-child(even) { background: var(--paper-cool); }
   <p class="lead">The operational dashboard provides fleet-wide visibility, per-site drill-down, historical trend analysis, and alarm management in a single interface.</p>
 
   <div class="ascii-box">
-<span class="a-title">CEION SolarPulse — Live Operations Dashboard</span>
+<span class="a-title">GWE SolarPulse — Live Operations Dashboard</span>
 
  ┌────────────────────────────────────────────────────────────────────────────┐
- │  <span class="a-white">CEION SOLARPULSE</span>                                              🔔  👤 │
+ │  <span class="a-white">GWE SOLARPULSE</span>                                              🔔  👤 │
  ├────────────────────────────────────────────────────────────────────────────┤
  │                                                                            │
  │  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐                       │
@@ -1192,11 +1191,11 @@ tbody tr:nth-child(even) { background: var(--paper-cool); }
  │  ┌──────────────────────────────────────────────────────────────────────┐  │
  │  │  <span class="a-white">PLANT</span>                        <span class="a-white">POWER</span>    <span class="a-white">TODAY</span>    <span class="a-white">BATTERY</span>   <span class="a-white">STATUS</span>    │  │
  │  ├──────────────────────────────────────────────────────────────────────┤  │
- │  │  CEION Site A — Lagos         45.2 kW   312 kWh    67%     <span class="a-green">● Online</span>  │  │
- │  │  CEION Site B — Abuja         28.1 kW   198 kWh    54%     <span class="a-green">● Online</span>  │  │
- │  │  CEION Site C — PH            12.7 kW    89 kWh    23%     <span class="a-yellow">● Alarm</span>   │  │
- │  │  CEION Site D — Ibadan        33.5 kW   241 kWh    71%     <span class="a-green">● Online</span>  │  │
- │  │  CEION Site E — Kano           8.2 kW    56 kWh    12%     <span class="a-red">● Offline</span> │  │
+ │  │  GWE Site A — Lagos           45.2 kW   312 kWh    67%     <span class="a-green">● Online</span>  │  │
+ │  │  GWE Site B — Abuja           28.1 kW   198 kWh    54%     <span class="a-green">● Online</span>  │  │
+ │  │  GWE Site C — PH              12.7 kW    89 kWh    23%     <span class="a-yellow">● Alarm</span>   │  │
+ │  │  GWE Site D — Ibadan          33.5 kW   241 kWh    71%     <span class="a-green">● Online</span>  │  │
+ │  │  GWE Site E — Kano             8.2 kW    56 kWh    12%     <span class="a-red">● Offline</span> │  │
  │  └──────────────────────────────────────────────────────────────────────┘  │
  │                                                                            │
  │  ┌──────────────────────────────────────────────────────────────────────┐  │
@@ -1322,7 +1321,7 @@ tbody tr:nth-child(even) { background: var(--paper-cool); }
         <tr><td>Dashboard — alarm console</td><td><span class="pill pill-moderate">Built</span></td><td>Real-time alarm feed</td></tr>
         <tr><td>Dashboard — navigation</td><td><span class="pill pill-moderate">Built</span></td><td>Responsive sidebar layout</td></tr>
         <tr><td>Production deployment</td><td><span class="pill pill-sky">Ready</span></td><td>Server requirements known, config ready</td></tr>
-        <tr><td>Operations training</td><td><span class="pill pill-sky">Pending</span></td><td>2 sessions for CEION team</td></tr>
+        <tr><td>Operations training</td><td><span class="pill pill-sky">Pending</span></td><td>2 sessions for GWE team</td></tr>
       </tbody>
     </table>
   </div>
@@ -1378,7 +1377,7 @@ tbody tr:nth-child(even) { background: var(--paper-cool); }
     </div>
     <div class="timeline-item next">
       <h5>Fleet-Wide Configuration</h5>
-      <p>Deploy sync profiles for all CEION stations. Per-plant configuration validation. Data quality monitoring for 72 hours post-deployment.</p>
+      <p>Deploy sync profiles for all GWE stations. Per-plant configuration validation. Data quality monitoring for 72 hours post-deployment.</p>
       <span class="tag tag-next">Next Phase</span>
     </div>
     <div class="timeline-item pending">
@@ -1388,7 +1387,7 @@ tbody tr:nth-child(even) { background: var(--paper-cool); }
     </div>
     <div class="timeline-item pending">
       <h5>Operational Training & Handover</h5>
-      <p>Two structured training sessions for CEION operations team. Dashboard navigation, alarm response, report generation, and admin functions.</p>
+      <p>Two structured training sessions for GWE operations team. Dashboard navigation, alarm response, report generation, and admin functions.</p>
       <span class="tag tag-pending">Pending</span>
     </div>
     <div class="timeline-item pending">
@@ -1400,18 +1399,18 @@ tbody tr:nth-child(even) { background: var(--paper-cool); }
 
   <div class="dark-box" style="margin-top:32px;">
     <h3>Entry Criteria for Fleet Deployment</h3>
-    <p>1. Confirmation of complete plant inventory for CEION portfolio<br>2. Verification of Solarman API token validity across all stations<br>3. Green light from CEION operations leadership — deployment begins within 48 hours</p>
+    <p>1. Confirmation of complete plant inventory for GWE portfolio<br>2. Verification of Solarman API token validity across all stations<br>3. Green light from GWE operations leadership — deployment begins within 48 hours</p>
   </div>
 
   <div class="quote" style="margin-top:24px;">
-    "The system is built. The API is connected. The data pipeline is operational. We are ready to deploy across the full CEION fleet upon confirmation of the plant inventory and API access."
+    "The system is built. The API is connected. The data pipeline is operational. We are ready to deploy across the full GWE fleet upon confirmation of the plant inventory and API access."
   </div>
 </div>
 
 <!-- ==================== FOOTER ==================== -->
 <div class="footer">
   <p><strong>Divine Shedrack</strong> — Engineering Lead &nbsp;|&nbsp; <strong>Great Itodo</strong> — Frontend & Systems Design</p>
-  <p style="margin-top:6px;">Prepared for CEION Operations & Abara Advisory | June 2026</p>
+  <p style="margin-top:6px;">Prepared for GWE Operations & Abara Advisory | June 2026</p>
   <p style="margin-top:10px; color:#94A3B8; font-size:10px;">Full technical documentation, source code repository, and deployment runbooks maintained separately and available upon request.</p>
 </div>
 
