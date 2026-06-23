@@ -3,39 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>GWE SolarPulse — Persistent Solar Fleet Monitoring Platform</title>
+<title>GWE — Persistent Solar Fleet Monitoring Platform</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-  --navy: #0B1120;
-  --navy-light: #151E32;
+  --ink: #0F172A;
+  --ink-soft: #1E293B;
   --sky: #0EA5E9;
-  --sky-light: #38BDF8;
+  --sky-bright: #38BDF8;
   --sky-pale: #E0F2FE;
   --teal: #14B8A6;
-  --teal-light: #5EEAD4;
+  --teal-pale: #F0FDFA;
   --amber: #F59E0B;
-  --amber-light: #FDE68A;
-  --rose: #F43F5E;
-  --rose-light: #FECDD3;
-  --violet: #8B5CF6;
-  --violet-light: #DDD6FE;
+  --amber-pale: #FFF7ED;
+  --rose: #EF4444;
+  --rose-pale: #FEF2F2;
   --emerald: #10B981;
-  --emerald-light: #A7F3D0;
+  --emerald-pale: #ECFDF5;
+  --violet: #8B5CF6;
+  --violet-pale: #F5F3FF;
   --slate: #475569;
   --slate-light: #94A3B8;
-  --bg: #FFFFFF;
-  --bg-warm: #FAFAF9;
-  --bg-cool: #F8FAFC;
+  --slate-faint: #CBD5E1;
+  --paper: #FFFFFF;
+  --paper-warm: #FAFAF9;
+  --paper-cool: #F8FAFC;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  color: var(--navy);
-  background: var(--bg);
+  color: var(--ink);
+  background: var(--paper);
   line-height: 1.65;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
@@ -50,10 +51,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: var(--navy);
+  background: var(--ink);
   color: white;
   text-align: center;
-  padding: 40px 20px;
+  padding: 60px 24px;
   position: relative;
   overflow: hidden;
 }
@@ -61,47 +62,47 @@ body {
 .cover::before {
   content: '';
   position: absolute;
-  top: -30%;
-  right: -30%;
+  top: -25%;
+  right: -20%;
   width: 80vw;
   height: 80vw;
   max-width: 700px;
   max-height: 700px;
   background: var(--sky);
-  opacity: 0.08;
+  opacity: 0.06;
   border-radius: 50%;
-  filter: blur(60px);
+  filter: blur(80px);
 }
 
 .cover::after {
   content: '';
   position: absolute;
   bottom: -20%;
-  left: -20%;
+  left: -15%;
   width: 60vw;
   height: 60vw;
   max-width: 500px;
   max-height: 500px;
   background: var(--teal);
-  opacity: 0.06;
+  opacity: 0.05;
   border-radius: 50%;
-  filter: blur(50px);
+  filter: blur(60px);
 }
 
 .cover-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(14,165,233,0.15);
-  border: 1px solid rgba(14,165,233,0.3);
-  color: var(--sky-light);
-  padding: 8px 20px;
+  background: rgba(14,165,233,0.12);
+  border: 1px solid rgba(14,165,233,0.25);
+  color: var(--sky-bright);
+  padding: 8px 22px;
   border-radius: 100px;
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
   z-index: 1;
 }
 
@@ -111,72 +112,77 @@ body {
   height: 7px;
   background: var(--emerald);
   border-radius: 50%;
-  box-shadow: 0 0 8px var(--emerald);
-  animation: pulse 2s infinite;
+  box-shadow: 0 0 10px var(--emerald);
+  animation: pulse 2.5s infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
 }
 
-.cover-logo {
+.cover-org {
   font-size: 11px;
   font-weight: 800;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   text-transform: uppercase;
   color: var(--slate-light);
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   z-index: 1;
 }
 
 .cover h1 {
-  font-size: clamp(32px, 8vw, 64px);
+  font-size: clamp(28px, 7vw, 56px);
   font-weight: 900;
-  line-height: 1.05;
-  max-width: 900px;
+  line-height: 1.08;
+  max-width: 800px;
   margin-bottom: 16px;
-  letter-spacing: -1.5px;
+  letter-spacing: -1.8px;
   z-index: 1;
-  padding: 0 10px;
+  padding: 0 8px;
 }
 
-.cover h1 span { color: var(--sky-light); }
+.cover h1 .accent { color: var(--sky-bright); }
 
 .cover-subtitle {
-  font-size: clamp(16px, 4vw, 22px);
+  font-size: clamp(15px, 3.5vw, 20px);
   color: var(--slate-light);
   font-weight: 400;
-  margin-bottom: 40px;
-  max-width: 600px;
+  margin-bottom: 52px;
+  max-width: 560px;
   z-index: 1;
-  padding: 0 15px;
+  padding: 0 12px;
+  line-height: 1.6;
 }
 
 .cover-meta {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
-  max-width: 640px;
+  gap: 10px;
+  max-width: 600px;
   width: 100%;
   text-align: left;
   z-index: 1;
-  padding: 0 10px;
+  padding: 0 8px;
+}
+
+@media (min-width: 640px) {
+  .cover-meta { grid-template-columns: 1fr 1fr; gap: 14px; }
 }
 
 .meta-item {
   padding: 18px 20px;
-  background: rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.035);
   border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.06);
   backdrop-filter: blur(8px);
 }
 
 .meta-label {
   font-size: 9px;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--sky-light);
+  letter-spacing: 2px;
+  color: var(--sky-bright);
   margin-bottom: 6px;
   font-weight: 700;
 }
@@ -185,7 +191,7 @@ body {
   font-size: 13px;
   font-weight: 600;
   line-height: 1.5;
-  color: rgba(255,255,255,0.9);
+  color: rgba(255,255,255,0.88);
 }
 
 /* ===== PAGE BREAK ===== */
@@ -193,15 +199,23 @@ body {
 
 /* ===== CONTENT PAGES ===== */
 .page {
-  max-width: 880px;
+  max-width: 860px;
   margin: 0 auto;
-  padding: 36px 18px;
+  padding: 40px 20px;
+}
+
+@media (min-width: 640px) {
+  .page { padding: 48px 32px; }
+}
+
+@media (min-width: 768px) {
+  .page { padding: 56px 48px; }
 }
 
 h2 {
-  font-size: clamp(24px, 6vw, 32px);
+  font-size: clamp(22px, 5.5vw, 30px);
   font-weight: 900;
-  color: var(--navy);
+  color: var(--ink);
   margin-bottom: 20px;
   letter-spacing: -0.6px;
   position: relative;
@@ -213,26 +227,26 @@ h2::after {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 50px;
-  height: 4px;
+  width: 48px;
+  height: 3px;
   background: var(--sky);
   border-radius: 2px;
 }
 
 h3 {
-  font-size: clamp(18px, 4.5vw, 22px);
+  font-size: clamp(17px, 4vw, 20px);
   font-weight: 800;
-  color: var(--navy);
+  color: var(--ink);
   margin-top: 32px;
   margin-bottom: 14px;
   letter-spacing: -0.3px;
 }
 
 h4 {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
-  color: var(--navy);
-  margin-top: 24px;
+  color: var(--ink);
+  margin-top: 22px;
   margin-bottom: 10px;
 }
 
@@ -244,22 +258,22 @@ p {
 }
 
 .lead {
-  font-size: clamp(15px, 3.8vw, 18px);
+  font-size: clamp(14px, 3.2vw, 17px);
   color: var(--slate);
   margin-bottom: 24px;
   line-height: 1.7;
   font-weight: 400;
 }
 
-/* ===== SECTION HEADER BAR ===== */
-.section-bar {
+/* ===== SECTION HEADER ===== */
+.section-header {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
-.section-bar .num {
+.section-header .num {
   width: 36px;
   height: 36px;
   background: var(--sky);
@@ -273,12 +287,12 @@ p {
   flex-shrink: 0;
 }
 
-.section-bar h2 {
+.section-header h2 {
   margin-bottom: 0;
   padding-bottom: 0;
 }
 
-.section-bar h2::after { display: none; }
+.section-header h2::after { display: none; }
 
 /* ===== STAT ROW ===== */
 .stat-row {
@@ -292,6 +306,7 @@ p {
   .stat-row {
     grid-template-columns: repeat(4, 1fr);
     gap: 14px;
+    margin: 28px 0;
   }
 }
 
@@ -303,8 +318,12 @@ p {
   border: 2px solid;
 }
 
+@media (min-width: 640px) {
+  .stat-card { padding: 22px 16px; }
+}
+
 .stat-card .number {
-  font-size: clamp(24px, 6vw, 32px);
+  font-size: clamp(22px, 5.5vw, 30px);
   font-weight: 900;
   margin-bottom: 4px;
   letter-spacing: -1px;
@@ -315,7 +334,7 @@ p {
   color: var(--slate-light);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
 }
 
 .stat-sky { border-color: var(--sky); }
@@ -340,18 +359,19 @@ p {
 .card-grid, .card-grid-3, .card-grid-4 {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
-  margin: 20px 0;
+  gap: 10px;
+  margin: 18px 0;
 }
 
 @media (min-width: 640px) {
-  .card-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .card-grid-3 { grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .card-grid-4 { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .card-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 24px 0; }
+  .card-grid-3 { grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 24px 0; }
+  .card-grid-4 { grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 24px 0; }
 }
 
 @media (min-width: 768px) {
-  .card-grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .card-grid-3 { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .card-grid-4 { grid-template-columns: repeat(4, 1fr); gap: 12px; }
 }
 
 .card {
@@ -359,6 +379,10 @@ p {
   border-radius: 16px;
   position: relative;
   overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .card { padding: 26px; }
 }
 
 .card-icon {
@@ -376,7 +400,7 @@ p {
   font-size: 15px;
   font-weight: 800;
   margin-bottom: 8px;
-  color: var(--navy);
+  color: var(--ink);
 }
 
 .card p, .card li {
@@ -408,53 +432,55 @@ p {
 .card-sky { background: var(--sky-pale); }
 .card-sky .card-icon { background: var(--sky); color: white; }
 
-.card-teal { background: #F0FDFA; }
+.card-teal { background: var(--teal-pale); }
 .card-teal .card-icon { background: var(--teal); color: white; }
 
-.card-amber { background: #FFF7ED; }
+.card-amber { background: var(--amber-pale); }
 .card-amber .card-icon { background: var(--amber); color: white; }
 
-.card-rose { background: #FFF1F2; }
+.card-rose { background: var(--rose-pale); }
 .card-rose .card-icon { background: var(--rose); color: white; }
 
-.card-violet { background: #F5F3FF; }
+.card-violet { background: var(--violet-pale); }
 .card-violet .card-icon { background: var(--violet); color: white; }
 
-.card-emerald { background: #ECFDF5; }
+.card-emerald { background: var(--emerald-pale); }
 .card-emerald .card-icon { background: var(--emerald); color: white; }
 
-/* ===== HIGHLIGHT BOX ===== */
-.highlight-box {
-  background: var(--navy);
+/* ===== DARK BOX ===== */
+.dark-box {
+  background: var(--ink);
   color: white;
   padding: 28px 22px;
-  border-radius: 16px;
+  border-radius: 18px;
   margin: 24px 0;
   position: relative;
   overflow: hidden;
 }
 
-.highlight-box::before {
+.dark-box::before {
   content: '';
   position: absolute;
-  top: -50%;
+  top: -40%;
   right: -10%;
-  width: 300px;
-  height: 300px;
+  width: 280px;
+  height: 280px;
   background: var(--sky);
-  opacity: 0.08;
+  opacity: 0.06;
   border-radius: 50%;
 }
 
-.highlight-box h3 {
-  color: var(--sky-light);
+.dark-box h3 {
+  color: var(--sky-bright);
   margin-top: 0;
   font-size: 20px;
+  font-weight: 800;
 }
 
-.highlight-box p {
-  color: #94A3B8;
+.dark-box p {
+  color: var(--slate-light);
   font-size: 14px;
+  margin-bottom: 0;
 }
 
 /* ===== QUOTE ===== */
@@ -464,9 +490,9 @@ p {
   padding: 20px 24px;
   border-radius: 0 14px 14px 0;
   margin: 24px 0;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
-  color: var(--navy);
+  color: var(--ink);
   font-style: italic;
   line-height: 1.6;
 }
@@ -480,8 +506,8 @@ p {
 
 .steps li {
   position: relative;
-  padding-left: 52px;
-  margin-bottom: 20px;
+  padding-left: 50px;
+  margin-bottom: 18px;
   min-height: 36px;
 }
 
@@ -491,8 +517,8 @@ p {
   position: absolute;
   left: 0;
   top: 0;
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   background: var(--sky);
   color: white;
   border-radius: 10px;
@@ -506,7 +532,7 @@ p {
 .steps li strong {
   display: block;
   font-size: 15px;
-  color: var(--navy);
+  color: var(--ink);
   margin-bottom: 3px;
 }
 
@@ -516,31 +542,39 @@ p {
 }
 
 /* ===== TABLES ===== */
-.table-wrapper {
+.table-wrap {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  margin: 20px 0;
+  margin: 18px 0;
   border-radius: 14px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
 
 table {
   width: 100%;
-  min-width: 500px;
+  min-width: 480px;
   border-collapse: separate;
   border-spacing: 0;
   font-size: 12px;
 }
 
+@media (min-width: 640px) {
+  table { font-size: 13px; }
+}
+
 thead {
-  background: var(--navy);
+  background: var(--ink);
   color: white;
 }
 
 th, td {
-  padding: 12px 14px;
+  padding: 11px 14px;
   text-align: left;
   border-bottom: 1px solid #E2E8F0;
+}
+
+@media (min-width: 640px) {
+  th, td { padding: 13px 16px; }
 }
 
 th {
@@ -551,8 +585,12 @@ th {
   white-space: nowrap;
 }
 
+@media (min-width: 640px) {
+  th { font-size: 10px; }
+}
+
 tbody tr { background: white; }
-tbody tr:nth-child(even) { background: #F8FAFC; }
+tbody tr:nth-child(even) { background: var(--paper-cool); }
 
 /* ===== PILLS ===== */
 .pill {
@@ -565,22 +603,22 @@ tbody tr:nth-child(even) { background: #F8FAFC; }
   white-space: nowrap;
 }
 
-.pill-critical { background: var(--rose-light); color: var(--rose); }
-.pill-high { background: var(--amber-light); color: #92400E; }
-.pill-moderate { background: var(--emerald-light); color: #065F46; }
+.pill-critical { background: var(--rose-pale); color: var(--rose); }
+.pill-high { background: var(--amber-pale); color: #92400E; }
+.pill-moderate { background: var(--emerald-pale); color: #065F46; }
 .pill-sky { background: var(--sky-pale); color: #0369A1; }
 
 /* ===== TIMELINE ===== */
 .timeline {
   position: relative;
-  padding-left: 28px;
+  padding-left: 26px;
   margin: 24px 0;
 }
 
 .timeline::before {
   content: '';
   position: absolute;
-  left: 8px;
+  left: 7px;
   top: 5px;
   bottom: 5px;
   width: 2px;
@@ -590,17 +628,17 @@ tbody tr:nth-child(even) { background: #F8FAFC; }
 
 .timeline-item {
   position: relative;
-  margin-bottom: 22px;
-  padding-left: 16px;
+  margin-bottom: 20px;
+  padding-left: 14px;
 }
 
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: -26px;
+  left: -24px;
   top: 2px;
-  width: 15px;
-  height: 15px;
+  width: 14px;
+  height: 14px;
   background: white;
   border: 3px solid var(--sky);
   border-radius: 50%;
@@ -614,7 +652,7 @@ tbody tr:nth-child(even) { background: #F8FAFC; }
 .timeline-item.done::after {
   content: '✓';
   position: absolute;
-  left: -23px;
+  left: -21px;
   top: 2px;
   color: white;
   font-size: 9px;
@@ -624,7 +662,7 @@ tbody tr:nth-child(even) { background: #F8FAFC; }
 .timeline-item h5 {
   font-size: 15px;
   font-weight: 800;
-  color: var(--navy);
+  color: var(--ink);
   margin-bottom: 4px;
 }
 
@@ -645,66 +683,60 @@ tbody tr:nth-child(even) { background: #F8FAFC; }
   letter-spacing: 0.5px;
 }
 
-.tag-done { background: var(--emerald-light); color: #065F46; }
+.tag-done { background: var(--emerald-pale); color: #065F46; }
 .tag-next { background: var(--sky-pale); color: #0369A1; }
-.tag-pending { background: #F1F5F9; color: var(--slate-light); }
+.tag-pending { background: var(--paper-cool); color: var(--slate-light); }
 
-/* ===== ASCII DIAGRAM BOX ===== */
-.diagram-box {
-  background: var(--navy);
-  color: #CBD5E1;
-  padding: 20px 16px;
+/* ===== ASCII DIAGRAM ===== */
+.ascii-box {
+  background: var(--ink);
+  color: var(--slate-faint);
+  padding: 18px 14px;
   border-radius: 14px;
-  margin: 20px 0;
+  margin: 18px 0;
   font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
-  font-size: 9px;
+  font-size: 8px;
   line-height: 1.5;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   white-space: pre;
-  box-shadow: 0 8px 32px rgba(11,17,32,0.3);
+  box-shadow: 0 8px 32px rgba(11,17,32,0.25);
 }
 
-.diagram-box .d-title {
-  color: var(--sky-light);
+.ascii-box .a-title {
+  color: var(--sky-bright);
   font-weight: 700;
   margin-bottom: 12px;
-  font-size: 10px;
+  font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-.diagram-box .d-green { color: var(--emerald); }
-.diagram-box .d-red { color: var(--rose); }
-.diagram-box .d-yellow { color: var(--amber); }
-.diagram-box .d-blue { color: var(--sky-light); }
-.diagram-box .d-white { color: white; }
+.ascii-box .a-green { color: var(--emerald); }
+.ascii-box .a-red { color: var(--rose); }
+.ascii-box .a-yellow { color: var(--amber); }
+.ascii-box .a-blue { color: var(--sky-bright); }
+.ascii-box .a-white { color: white; }
 
 @media (min-width: 640px) {
-  .diagram-box {
-    font-size: 10px;
-    padding: 28px 24px;
-  }
-  .diagram-box .d-title { font-size: 11px; }
+  .ascii-box { font-size: 9px; padding: 24px 20px; }
+  .ascii-box .a-title { font-size: 10px; }
 }
 
 @media (min-width: 768px) {
-  .diagram-box {
-    font-size: 11px;
-    padding: 32px;
-  }
+  .ascii-box { font-size: 10px; padding: 28px 24px; }
 }
 
-/* ===== FLOW BAR ===== */
-.flow-bar {
-  background: var(--bg-cool);
+/* ===== FLOW ===== */
+.flow-box {
+  background: var(--paper-cool);
   border: 2px solid #E2E8F0;
   border-radius: 16px;
-  padding: 24px 16px;
-  margin: 20px 0;
+  padding: 22px 16px;
+  margin: 18px 0;
 }
 
-.flow-bar-inner {
+.flow-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -715,7 +747,7 @@ tbody tr:nth-child(even) { background: #F8FAFC; }
 }
 
 @media (min-width: 640px) {
-  .flow-bar-inner {
+  .flow-inner {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
@@ -749,7 +781,7 @@ tbody tr:nth-child(even) { background: #F8FAFC; }
 .flow-sky { background: var(--sky); }
 .flow-teal { background: var(--teal); }
 .flow-violet { background: var(--violet); }
-.flow-navy { background: var(--navy); }
+.flow-ink { background: var(--ink); }
 
 .flow-caption {
   text-align: center;
@@ -766,10 +798,10 @@ tbody tr:nth-child(even) { background: #F8FAFC; }
   font-size: 11px;
   border-top: 1px solid #E2E8F0;
   margin-top: 36px;
-  background: var(--bg-warm);
+  background: var(--paper-warm);
 }
 
-.footer strong { color: var(--navy); }
+.footer strong { color: var(--ink); }
 
 /* ===== PRINT ===== */
 @media print {
@@ -780,66 +812,7 @@ tbody tr:nth-child(even) { background: #F8FAFC; }
   .card-grid, .card-grid-3, .card-grid-4 { page-break-inside: avoid; }
   .card { break-inside: avoid; }
   table { page-break-inside: avoid; }
-  .diagram-box { font-size: 8pt; padding: 20px; }
-}
-
-/* ===== DESKTOP ENHANCEMENTS ===== */
-@media (min-width: 768px) {
-  .cover { padding: 80px 60px; }
-  .cover-meta { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-  .meta-item { padding: 24px; }
-  .meta-label { font-size: 10px; }
-  .meta-value { font-size: 14px; }
-
-  .page { padding: 56px 48px; }
-
-  h2 { font-size: 32px; padding-bottom: 16px; }
-  h2::after { width: 60px; }
-
-  .lead { font-size: 18px; margin-bottom: 32px; }
-
-  .section-bar { gap: 16px; margin-bottom: 28px; }
-  .section-bar .num { width: 44px; height: 44px; font-size: 16px; }
-
-  .stat-card { padding: 24px 20px; }
-  .stat-card .number { font-size: 32px; }
-  .stat-card .label { font-size: 11px; }
-
-  .card { padding: 28px; }
-  .card-icon { width: 44px; height: 44px; font-size: 20px; }
-  .card h5 { font-size: 16px; }
-
-  .highlight-box { padding: 40px; }
-  .highlight-box h3 { font-size: 24px; }
-
-  .quote { padding: 24px 32px; font-size: 18px; }
-
-  .steps li { padding-left: 64px; margin-bottom: 24px; }
-  .steps li::before { width: 40px; height: 40px; font-size: 15px; }
-  .steps li strong { font-size: 16px; }
-  .steps li span { font-size: 14px; }
-
-  th, td { padding: 14px 18px; font-size: 13px; }
-  th { font-size: 10px; }
-
-  .pill { padding: 5px 12px; font-size: 11px; }
-
-  .timeline { padding-left: 36px; }
-  .timeline::before { left: 10px; width: 3px; }
-  .timeline-item { margin-bottom: 28px; padding-left: 20px; }
-  .timeline-item::before { left: -32px; width: 18px; height: 18px; border-width: 4px; }
-  .timeline-item.done::after { left: -28px; font-size: 10px; }
-  .timeline-item h5 { font-size: 17px; }
-  .timeline-item p { font-size: 14px; }
-  .timeline-item .tag { padding: 4px 12px; font-size: 10px; }
-
-  .flow-bar { padding: 32px; }
-  .flow-bar-inner { font-size: 13px; }
-  .flow-node { padding: 10px 18px; border-radius: 10px; }
-  .flow-arrow { font-size: 18px; }
-  .flow-caption { font-size: 12px; }
-
-  .footer { padding: 40px; font-size: 12px; }
+  .ascii-box { font-size: 8pt; padding: 20px; }
 }
 </style>
 <base target="_blank">
@@ -848,46 +821,46 @@ tbody tr:nth-child(even) { background: #F8FAFC; }
 
 <!-- ==================== COVER ==================== -->
 <div class="cover">
-  <div class="cover-badge">System Live & Operational</div>
-  <div class="cover-logo">GWE SolarPulse</div>
-  <h1>Persistent Solar Fleet<br><span>Monitoring Platform</span></h1>
-  <p class="cover-subtitle">Status, Architecture & Rollout Plan — June 2026</p>
+  <div class="cover-badge">System Operational</div>
+  <div class="cover-org">GWE — Green World Energy</div>
+  <h1>Persistent Solar Fleet<br><span class="accent">Monitoring Platform</span></h1>
+  <p class="cover-subtitle">Operational status, system architecture, and deployment readiness — June 2026</p>
 
   <div class="cover-meta">
     <div class="meta-item">
       <div class="meta-label">Prepared For</div>
-      <div class="meta-value">GWE Operations & Engineering Team</div>
+      <div class="meta-value">GWE Operations & Abara Advisory</div>
     </div>
     <div class="meta-item">
       <div class="meta-label">Engineering Lead</div>
       <div class="meta-value">Divine Shedrack — Senior Software Engineer / AI Engineer</div>
     </div>
     <div class="meta-item">
-      <div class="meta-label">Frontend & UX</div>
+      <div class="meta-label">Frontend & Systems Design</div>
       <div class="meta-value">Great Itodo — UI/UX / Frontend Developer</div>
     </div>
     <div class="meta-item">
-      <div class="meta-label">Status</div>
-      <div class="meta-value">Built, tested, API-connected. Ready for fleet deployment.</div>
+      <div class="meta-label">System Status</div>
+      <div class="meta-value">Built, tested, API-connected. Ready for production deployment.</div>
     </div>
   </div>
 </div>
 
-<!-- ==================== CONTEXT ==================== -->
+<!-- ==================== EXECUTIVE SUMMARY ==================== -->
 <div class="page page-break">
-  <div class="section-bar">
+  <div class="section-header">
     <div class="num">01</div>
-    <h2>Context</h2>
+    <h2>Executive Summary</h2>
   </div>
 
-  <p class="lead">GWE manages solar plants across multiple locations and different site areas. The existing dashboard shows live data — generation power, daily energy, battery status, grid interaction. It works in the moment, but the moment it closes, the data disappears.</p>
+  <p class="lead">GWE operates solar generation assets across multiple locations and site areas. The existing monitoring infrastructure provides real-time visibility but lacks data persistence — every session begins from zero, with no historical record, no trend baseline, and no operational accountability across the fleet.</p>
 
-  <p><strong>We built the solution.</strong> The API is live. The sync engine is running. The data pipeline works end-to-end. This document is a formal summary of what exists, how it works, what it enables, and how we take it across the finish line together.</p>
+  <p><strong>The system is built and operational.</strong> Solarman API integration is live. The sync engine is running. Data is persisting to MongoDB. The dashboard is rendering real-time and historical views. This document reports current system status, technical architecture, performance metrics, and the path to full fleet deployment.</p>
 
   <div class="stat-row">
     <div class="stat-card stat-sky">
       <div class="number">100%</div>
-      <div class="label">API Connected</div>
+      <div class="label">API Integration</div>
     </div>
     <div class="stat-card stat-teal">
       <div class="number">Live</div>
@@ -904,17 +877,17 @@ tbody tr:nth-child(even) { background: #F8FAFC; }
   </div>
 </div>
 
-<!-- ==================== THE PROBLEM ==================== -->
+<!-- ==================== OPERATIONAL GAP ==================== -->
 <div class="page page-break">
-  <div class="section-bar">
+  <div class="section-header">
     <div class="num">02</div>
-    <h2>The Problem — Recap</h2>
+    <h2>Operational Gap Analysis</h2>
   </div>
 
-  <p class="lead">Before this system, every dashboard session started from zero. No memory. No history. No accountability.</p>
+  <p class="lead">The current state creates five critical operational deficiencies that prevent GWE from managing the fleet as a unified operational system.</p>
 
-  <div class="diagram-box">
-<span class="d-title">BEFORE — Ephemeral Dashboard</span>
+  <div class="ascii-box">
+<span class="a-title">Current State — Ephemeral Data Flow</span>
 
 ┌──────────────────┐         ┌──────────────────┐
 │  Solar Plant A   │────────▶│                  │
@@ -931,32 +904,55 @@ tbody tr:nth-child(even) { background: #F8FAFC; }
                              └──────────────────┘
 
 ┌────────────────────────────────────────────────────────┐
-│  <span class="d-red">✕</span> Open dashboard = data is there                     │
-│  <span class="d-red">✕</span> Close & reopen = data is gone                      │
-│  <span class="d-red">✕</span> No yesterday, no last week, no last month         │
-│  <span class="d-red">✕</span> Cannot compare Plant A vs Plant B across time      │
-│  <span class="d-red">✕</span> No record when inverter trips or underperforms     │
-│  <span class="d-red">✕</span> Manual reporting = spreadsheets and guesswork      │
+│  <span class="a-red">✕</span> No historical baseline — cannot detect degradation   │
+│  <span class="a-red">✕</span> No cross-site comparison — fleet operates in silos    │
+│  <span class="a-red">✕</span> No audit trail — disputes resolved without data      │
+│  <span class="a-red">✕</span> No predictive signal — failures discovered late      │
+│  <span class="a-red">✕</span> Manual reporting — spreadsheets, not systems         │
 └────────────────────────────────────────────────────────┘
   </div>
 
-  <p>That was the gap. <strong>We plugged it.</strong></p>
+  <h3>Impact on Operational Control</h3>
+  <div class="card-grid">
+    <div class="card card-rose">
+      <div class="card-icon">!</div>
+      <h5>Accountability Gap</h5>
+      <p>Without persistent records, performance cannot be verified against contractual obligations or stakeholder commitments.</p>
+    </div>
+    <div class="card card-amber">
+      <div class="card-icon">⚡</div>
+      <h5>Degradation Blindness</h5>
+      <p>Output decline over weeks or months goes undetected until it becomes a failure event. No early warning system.</p>
+    </div>
+    <div class="card card-sky">
+      <div class="card-icon">📊</div>
+      <h5>Reporting Friction</h5>
+      <p>Monthly and quarterly production reports require manual data collection. No automated extraction or standardization.</p>
+    </div>
+    <div class="card card-violet">
+      <div class="card-icon">🔧</div>
+      <h5>Root Cause Isolation</h5>
+      <p>When alarms trigger, there is no before-and-after data to isolate whether the issue is device, environmental, or systemic.</p>
+    </div>
+  </div>
 </div>
 
-<!-- ==================== WHAT WE BUILT ==================== -->
+<!-- ==================== SYSTEM ARCHITECTURE ==================== -->
 <div class="page page-break">
-  <div class="section-bar">
+  <div class="section-header">
     <div class="num">03</div>
-    <h2>What We Built</h2>
+    <h2>System Architecture</h2>
   </div>
 
-  <div class="diagram-box">
-<span class="d-title">AFTER — Persistent Solar Fleet Monitoring</span>
+  <p class="lead">The platform introduces a persistent data layer between GWE's generation assets and operational dashboards. Data is captured once, normalized, stored, and made available for real-time monitoring and historical analysis simultaneously.</p>
+
+  <div class="ascii-box">
+<span class="a-title">Target State — Persistent Data Architecture</span>
 
 ┌──────────────────┐
 │  Solar Plant A   │────┐
 └──────────────────┘    │    ┌──────────────────────────┐
-                        ├────▶  <span class="d-blue">SYNC ENGINE</span>            │
+                        ├────▶  <span class="a-blue">SYNC ENGINE</span>            │
 ┌──────────────────┐    │    │                          │
 │  Solar Plant B   │────┤    │  ┌────────────────────┐  │
 └──────────────────┘    │    │  │ • Auth handler     │  │
@@ -968,8 +964,8 @@ tbody tr:nth-child(even) { background: #F8FAFC; }
                                         │
                                         ▼
                              ┌──────────────────────────┐
-                             │       <span class="d-green">DATABASE</span>           │
-                             │  (Everything persisted)  │
+                             │       <span class="a-green">DATABASE</span>           │
+                             │  (Persistent Storage)    │
                              │                          │
                              │  • Station records       │
                              │  • Device inventory      │
@@ -979,7 +975,7 @@ tbody tr:nth-child(even) { background: #F8FAFC; }
                                         │
                                         ▼
                    ┌──────────────────────────────────────────┐
-                   │          <span class="d-blue">DELIVERY LAYER</span>               │
+                   │          <span class="a-blue">DELIVERY LAYER</span>               │
                    │                                          │
                    │  ┌──────────┐   ┌──────────┐            │
                    │  │ REST API │   │ Live SSE │            │
@@ -989,225 +985,110 @@ tbody tr:nth-child(even) { background: #F8FAFC; }
                                       │
                                       ▼
                    ┌──────────────────────────────────────────┐
-                   │          <span class="d-white">DASHBOARD</span>                      │
+                   │          <span class="a-white">DASHBOARD</span>                      │
                    │                                          │
-                   │  <span class="d-green">✓</span> Open dashboard = all data there       │
-                   │  <span class="d-green">✓</span> Close & reopen = still there          │
-                   │  <span class="d-green">✓</span> Yesterday, last month, last year      │
-                   │  <span class="d-green">✓</span> Side-by-side plant comparison        │
-                   │  <span class="d-green">✓</span> Exportable trends & reports          │
+                   │  <span class="a-green">✓</span> Persistent historical record        │
+                   │  <span class="a-green">✓</span> Cross-site performance comparison   │
+                   │  <span class="a-green">✓</span> Automated reporting & export          │
+                   │  <span class="a-green">✓</span> Alarm correlation & root cause        │
                    └──────────────────────────────────────────┘
   </div>
 
   <h3>Component Status</h3>
-  <div class="table-wrapper">
+  <div class="table-wrap">
     <table>
       <thead>
-        <tr><th>Component</th><th>Status</th><th>Details</th></tr>
+        <tr><th>Component</th><th>Status</th><th>Function</th></tr>
       </thead>
       <tbody>
-        <tr><td><strong>Solarman API</strong></td><td><span class="pill pill-moderate">Running</span></td><td>Authenticated, connected, fetching data</td></tr>
-        <tr><td><strong>Plant list sync</strong></td><td><span class="pill pill-moderate">Running</span></td><td>All registered plants discovered</td></tr>
-        <tr><td><strong>Real-time metrics</strong></td><td><span class="pill pill-moderate">Running</span></td><td>Generation, consumption, battery, grid</td></tr>
-        <tr><td><strong>Device inventory</strong></td><td><span class="pill pill-moderate">Running</span></td><td>Inverters, dataloggers, meters</td></tr>
-        <tr><td><strong>Data persistence</strong></td><td><span class="pill pill-moderate">Running</span></td><td>All data stored, survives restarts</td></tr>
-        <tr><td><strong>REST API</strong></td><td><span class="pill pill-moderate">Running</span></td><td>Full CRUD for stations, devices, alarms</td></tr>
-        <tr><td><strong>SSE live stream</strong></td><td><span class="pill pill-moderate">Running</span></td><td>Dashboard auto-updates in real time</td></tr>
-        <tr><td><strong>Historical analytics</strong></td><td><span class="pill pill-moderate">Running</span></td><td>Daily, monthly, yearly energy charts</td></tr>
-        <tr><td><strong>Dashboard UI</strong></td><td><span class="pill pill-moderate">Built</span></td><td>Live grid, charts, navigation, alerts</td></tr>
+        <tr><td><strong>Solarman API Client</strong></td><td><span class="pill pill-moderate">Operational</span></td><td>Authenticated, token-rotating, retry-enabled data acquisition</td></tr>
+        <tr><td><strong>Plant Discovery</strong></td><td><span class="pill pill-moderate">Operational</span></td><td>Automatic enumeration of all registered stations</td></tr>
+        <tr><td><strong>Real-Time Sync</strong></td><td><span class="pill pill-moderate">Operational</span></td><td>Generation, consumption, battery SOC, grid power per plant</td></tr>
+        <tr><td><strong>Device Inventory</strong></td><td><span class="pill pill-moderate">Operational</span></td><td>Inverters, dataloggers, meters — full enumeration</td></tr>
+        <tr><td><strong>Data Persistence</strong></td><td><span class="pill pill-moderate">Operational</span></td><td>MongoDB with idempotent upserts, survives restarts</td></tr>
+        <tr><td><strong>REST API</strong></td><td><span class="pill pill-moderate">Operational</span></td><td>Full CRUD for stations, devices, alarms, energy data</td></tr>
+        <tr><td><strong>SSE Stream</strong></td><td><span class="pill pill-moderate">Operational</span></td><td>Real-time push to all connected dashboard clients</td></tr>
+        <tr><td><strong>Analytics Engine</strong></td><td><span class="pill pill-moderate">Operational</span></td><td>Daily, monthly, yearly rollup generation on write</td></tr>
+        <tr><td><strong>Dashboard UI</strong></td><td><span class="pill pill-moderate">Built</span></td><td>Live grid, charts, alarm console, device drill-down</td></tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<!-- ==================== HOW IT WORKS ==================== -->
+<!-- ==================== DATA PIPELINE ==================== -->
 <div class="page page-break">
-  <div class="section-bar">
+  <div class="section-header">
     <div class="num">04</div>
-    <h2>How It Works</h2>
+    <h2>Data Pipeline</h2>
   </div>
 
-  <p class="lead">The sync cycle runs every 5 minutes automatically. A full cycle completes in under 30 seconds for the entire fleet.</p>
+  <p class="lead">The sync cycle executes every 5 minutes. A full fleet cycle completes in under 30 seconds. Data flows through six stages: discovery, acquisition, normalization, persistence, aggregation, and broadcast.</p>
 
-  <div class="flow-bar">
-    <div class="flow-bar-inner">
+  <div class="flow-box">
+    <div class="flow-inner">
       <div class="flow-node flow-sky">Solarman API</div>
       <div class="flow-arrow">→</div>
       <div class="flow-node flow-teal">Sync Engine</div>
       <div class="flow-arrow">→</div>
       <div class="flow-node flow-violet">MongoDB</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-node flow-navy">Dashboard</div>
+      <div class="flow-node flow-ink">Dashboard</div>
     </div>
-    <p class="flow-caption">Every 5 min → normalize → upsert → broadcast via SSE to all connected clients</p>
+    <p class="flow-caption">5-minute cycle → normalize → upsert → aggregate → broadcast via SSE</p>
   </div>
 
-  <h3>Sync Pipeline — Step by Step</h3>
+  <h3>Pipeline Stages</h3>
   <div class="card-grid">
     <div class="card card-sky">
       <div class="card-icon">1</div>
-      <h5>Fetch Plant List</h5>
+      <h5>Plant Discovery</h5>
       <p><code>GET /station/search</code></p>
-      <p>Discovers all registered stations in the Solarman account.</p>
+      <p>Enumerates all registered stations. Maintains registry for incremental sync.</p>
     </div>
     <div class="card card-teal">
       <div class="card-icon">2</div>
-      <h5>Real-Time Per Plant</h5>
+      <h5>Real-Time Metrics</h5>
       <p><code>POST /station/realtime</code></p>
-      <p>Pulls current generation, battery SOC, grid power, load for each plant.</p>
+      <p>Per-plant: generation power, daily yield, battery SOC, grid import/export, load.</p>
     </div>
     <div class="card card-amber">
       <div class="card-icon">3</div>
       <h5>Device Inventory</h5>
       <p><code>POST /device/page</code></p>
-      <p>Enumerates all inverters, dataloggers, and meters per station.</p>
+      <p>Per-station: inverters, dataloggers, meters with serial numbers and firmware versions.</p>
     </div>
     <div class="card card-emerald">
       <div class="card-icon">4</div>
-      <h5>Inverter Telemetry</h5>
+      <h5>Device Telemetry</h5>
       <p><code>POST /device/currentData</code></p>
-      <p>Pulls per-device metrics: voltage, current, power, temperature, alarms.</p>
+      <p>Per-device: voltage, current, power, temperature, fault codes, operational status.</p>
     </div>
   </div>
 
-  <div class="card-grid" style="margin-top:12px;">
+  <div class="card-grid" style="margin-top:10px;">
     <div class="card card-violet">
       <div class="card-icon">5</div>
-      <h5>Normalize & Map</h5>
-      <p>Unifies disparate field names, units, and response shapes into a single canonical schema before storage.</p>
+      <h5>Schema Normalization</h5>
+      <p>Unifies disparate field names, units, and response structures into a single canonical schema before storage.</p>
     </div>
     <div class="card card-rose">
       <div class="card-icon">6</div>
       <h5>Upsert & Broadcast</h5>
-      <p>Writes to MongoDB (idempotent upserts) + pushes live updates to all connected dashboards via SSE.</p>
+      <p>Idempotent writes to MongoDB. On-write rollups for hourly, daily, monthly, yearly views. SSE push to all connected clients.</p>
     </div>
   </div>
 </div>
 
-<!-- ==================== ARCHITECTURE ==================== -->
+<!-- ==================== PERFORMANCE METRICS ==================== -->
 <div class="page page-break">
-  <div class="section-bar">
+  <div class="section-header">
     <div class="num">05</div>
-    <h2>System Architecture</h2>
+    <h2>Performance Metrics</h2>
   </div>
 
-  <div class="diagram-box">
-<span class="d-title">Full System Architecture</span>
+  <p class="lead">System performance is monitored against throughput, latency, and availability targets. All metrics are measured against the current pilot configuration.</p>
 
-  ┌─────────────────────┐       ┌─────────────────────────────┐
-  │   <span class="d-blue">EXTERNAL WORLD</span>    │       │      <span class="d-white">APPLICATION SERVER</span>      │
-  │                     │       │                             │
-  │  ┌───────────────┐  │       │  ┌───────────────────────┐  │
-  │  │ Solarman API  │  │───────┼──│  <span class="d-blue">SYNC ENGINE</span>         │  │
-  │  │               │  │       │  │                       │  │  ┌──────────────────┐
-  │  │ • Auth token  │  │       │  │  ┌─────────────────┐  │  │  │  <span class="d-green">MONGO-DB</span>         │
-  │  │ • Plant data  │  │       │  │  │ Scheduler       │  │  │  │                  │
-  │  │ • Device data │  │       │  │  │ (cron every 5m) │  │  │  │  • Stations      │
-  │  │ • Real-time   │  │       │  │  └─────────────────┘  │  │  │  • Devices       │
-  │  └───────────────┘  │       │  │                       │  │  │  • Alarms        │
-  └─────────────────────┘       │  │  ┌─────────────────┐  │  │  └──────────────────┘
-                                │  │  │ API Client      │  │  │
-  ┌─────────────────────┐       │  │  │ (Axios, retry)  │  │  │  ┌──────────────────┐
-  │   <span class="d-yellow">DASHBOARD USERS</span>   │       │  │  └─────────────────┘  │  │  │  <span class="d-yellow">MEMORY CACHE</span>     │
-  │                     │       │  │                       │  │  │                  │
-  │  ┌───────────────┐  │       │  │  ┌─────────────────┐  │  │  │  • Latest reads  │
-  │  │ Browser       │  │◀──────┼──│  │ Normalizer     │  │  │  │  • Active clients│
-  │  │ (Dashboard)   │  │       │  │  │ (field mapper) │  │  │  └──────────────────┘
-  │  └───────────────┘  │       │  │  └─────────────────┘  │  │
-  │                     │       │  └───────────────────────┘  │
-  │  ┌───────────────┐  │       │                             │
-  │  │ Mobile/Tablet │  │◀──────┼──│  <span class="d-blue">API SERVER (Express)</span>  │
-  │  └───────────────┘  │       │  │                       │
-  └─────────────────────┘       │  │  ┌─────────────────┐  │
-                                │  │  │ REST Endpoints  │  │
-  ┌─────────────────────┐       │  │  │ /api/stations   │  │
-  │   <span class="d-red">EXTERNAL SYSTEMS</span>  │       │  │  │ /api/stream     │  │
-  │                     │       │  │  │ /api/history    │  │
-  │  ┌───────────────┐  │       │  │  └─────────────────┘  │
-  │  │ Alert Webhook │  │◀──────┼──│  ┌─────────────────┐  │
-  │  │ (Email/Slack) │  │       │  │  │ <span class="d-blue">SSE Stream</span>      │  │
-  │  └───────────────┘  │       │  │  │ (real-time push)│  │
-  └─────────────────────┘       │  │  └─────────────────┘  │
-                                │  └───────────────────────┘
-                                └─────────────────────────────┘
-  </div>
-</div>
-
-<!-- ==================== DASHBOARD ==================== -->
-<div class="page page-break">
-  <div class="section-bar">
-    <div class="num">06</div>
-    <h2>The Dashboard</h2>
-  </div>
-
-  <p class="lead">What the GWE team sees when they log in. Live data. Historical trends. Everything in one place.</p>
-
-  <div class="diagram-box">
-<span class="d-title">GWE SolarPulse Dashboard — Live View</span>
-
- ┌────────────────────────────────────────────────────────────────────────────┐
- │  <span class="d-white">GWE SOLARPULSE</span>                                              🔔  👤 │
- ├────────────────────────────────────────────────────────────────────────────┤
- │                                                                            │
- │  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐                       │
- │  │ <span class="d-blue">Total</span>   │  │ <span class="d-green">Today</span>   │  │ <span class="d-yellow">Battery</span> │  │ <span class="d-blue">Grid</span>    │                       │
- │  │ Plants  │  │ Yield   │  │ Avg SOC │  │ Import  │                       │
- │  │   <span class="d-white">12</span>    │  │ <span class="d-white">3,842</span>   │  │   <span class="d-white">62%</span>   │  │  <span class="d-white">1.2 MW</span> │                       │
- │  └─────────┘  └─────────┘  └─────────┘  └─────────┘                       │
- │                                                                            │
- │  ┌──────────────────────────────────────────────────────────────────────┐  │
- │  │  <span class="d-white">PLANT</span>                        <span class="d-white">POWER</span>    <span class="d-white">TODAY</span>    <span class="d-white">BATTERY</span>   <span class="d-white">STATUS</span>    │  │
- │  ├──────────────────────────────────────────────────────────────────────┤  │
- │  │  GWE Site A — Lagos           45.2 kW   312 kWh    67%     <span class="d-green">● Online</span>  │  │
- │  │  GWE Site B — Abuja           28.1 kW   198 kWh    54%     <span class="d-green">● Online</span>  │  │
- │  │  GWE Site C — Port Harcourt   12.7 kW    89 kWh    23%     <span class="d-yellow">● Alarm</span>   │  │
- │  │  GWE Site D — Ibadan          33.5 kW   241 kWh    71%     <span class="d-green">● Online</span>  │  │
- │  │  GWE Site E — Kano             8.2 kW    56 kWh    12%     <span class="d-red">● Offline</span> │  │
- │  └──────────────────────────────────────────────────────────────────────┘  │
- │                                                                            │
- │  ┌──────────────────────────────────────────────────────────────────────┐  │
- │  │  <span class="d-white">ENERGY PRODUCTION — LAST 30 DAYS</span>                                    │  │
- │  │                                                                       │  │
- │  │  400 ┤                  ▄▄                                           │  │
- │  │  350 ┤       ▄▄       ██       ▄▄           ▄▄                      │  │
- │  │  300 ┤  ▄▄  ██ ██  ▄▄ ██ ██  ▄█ ██  ▄▄    ██ ██  ▄▄               │  │
- │  │  250 ┤  ██  ██ ██  ██ ██ ██  ██ ██  ██ ▄▄ ██ ██  ██ ▄▄            │  │
- │  │  200 ┤  ██  ██ ██  ██ ██ ██  ██ ██  ██ ██ ██ ██  ██ ██ ▄▄  ▄▄    │  │
- │  │      └──────────────────────────────────────────────────────        │  │
- │  │       1   5    10   15   20   25   30                                │  │
- │  └──────────────────────────────────────────────────────────────────────┘  │
- │                                                                            │
- └────────────────────────────────────────────────────────────────────────────┘
-  </div>
-
-  <div class="card-grid-4" style="margin-top:20px;">
-    <div class="card card-sky" style="padding:18px;">
-      <h5 style="font-size:13px;">Live Grid</h5>
-      <p style="font-size:12px;">All plants at a glance with real-time KPIs</p>
-    </div>
-    <div class="card card-teal" style="padding:18px;">
-      <h5 style="font-size:13px;">Analytics Charts</h5>
-      <p style="font-size:12px;">Daily, monthly, yearly energy views</p>
-    </div>
-    <div class="card card-amber" style="padding:18px;">
-      <h5 style="font-size:13px;">Alarm Console</h5>
-      <p style="font-size:12px;">Real-time alerts with persistent history</p>
-    </div>
-    <div class="card card-violet" style="padding:18px;">
-      <h5 style="font-size:13px;">Device Drill-Down</h5>
-      <p style="font-size:12px;">Per-inverter telemetry & metrics</p>
-    </div>
-  </div>
-</div>
-
-<!-- ==================== STATISTICS ==================== -->
-<div class="page page-break">
-  <div class="section-bar">
-    <div class="num">07</div>
-    <h2>Performance & Statistics</h2>
-  </div>
-
-  <h3>Data Throughput</h3>
+  <h3>Fleet Scale</h3>
   <div class="stat-row">
     <div class="stat-card stat-sky">
       <div class="number">~12</div>
@@ -1247,25 +1128,25 @@ tbody tr:nth-child(even) { background: #F8FAFC; }
   </div>
 
   <h3>API Responsiveness</h3>
-  <div class="table-wrapper">
+  <div class="table-wrap">
     <table>
       <thead>
-        <tr><th>Endpoint</th><th>Avg Response</th><th>P95 Response</th><th>Availability</th></tr>
+        <tr><th>Endpoint</th><th>Average</th><th>P95</th><th>Availability</th></tr>
       </thead>
       <tbody>
         <tr><td>Plant List</td><td>~1.2s</td><td>~2.8s</td><td><span class="pill pill-moderate">99.2%</span></td></tr>
         <tr><td>Real-Time per Plant</td><td>~0.8s</td><td>~1.5s</td><td><span class="pill pill-moderate">98.7%</span></td></tr>
         <tr><td>Device Inventory</td><td>~1.5s</td><td>~3.2s</td><td><span class="pill pill-moderate">97.5%</span></td></tr>
         <tr><td>Inverter Telemetry</td><td>~0.9s</td><td>~1.8s</td><td><span class="pill pill-moderate">98.1%</span></td></tr>
-        <tr><td>Full Sync Cycle (all)</td><td>~18s</td><td>~28s</td><td><span class="pill pill-moderate">97.8%</span></td></tr>
-        <tr><td>SSE Push to Dashboard</td><td>~0.2s</td><td>~0.5s</td><td><span class="pill pill-moderate">99.5%</span></td></tr>
-        <tr><td>Historical Query (30 days)</td><td>~0.4s</td><td>~0.9s</td><td><span class="pill pill-moderate">99.8%</span></td></tr>
+        <tr><td>Full Sync Cycle</td><td>~18s</td><td>~28s</td><td><span class="pill pill-moderate">97.8%</span></td></tr>
+        <tr><td>SSE Push</td><td>~0.2s</td><td>~0.5s</td><td><span class="pill pill-moderate">99.5%</span></td></tr>
+        <tr><td>Historical Query (30d)</td><td>~0.4s</td><td>~0.9s</td><td><span class="pill pill-moderate">99.8%</span></td></tr>
       </tbody>
     </table>
   </div>
 
-  <h3>Data Schema — Plant Record</h3>
-  <div class="table-wrapper">
+  <h3>Data Schema — Canonical Plant Record</h3>
+  <div class="table-wrap">
     <table>
       <thead>
         <tr><th>Field</th><th>Type</th><th>Example</th><th>Source</th></tr>
@@ -1273,71 +1154,138 @@ tbody tr:nth-child(even) { background: #F8FAFC; }
       <tbody>
         <tr><td>stationId</td><td>Number</td><td>12345</td><td>Solarman API</td></tr>
         <tr><td>name</td><td>String</td><td>"GWE Site A"</td><td>Solarman API</td></tr>
-        <tr><td>installedCapacity</td><td>Number</td><td>50000 (W)</td><td>Solarman API</td></tr>
+        <tr><td>installedCapacity</td><td>Number (W)</td><td>50000</td><td>Solarman API</td></tr>
         <tr><td>networkStatus</td><td>String</td><td>"ONLINE"</td><td>Solarman API</td></tr>
-        <tr><td>generationPower</td><td>Number</td><td>45200 (W)</td><td>Real-time endpoint</td></tr>
-        <tr><td>generationValue</td><td>Number</td><td>312.5 (kWh)</td><td>Real-time endpoint</td></tr>
-        <tr><td>batterySOC</td><td>Number</td><td>67 (%)</td><td>Inverter telemetry</td></tr>
-        <tr><td>gridPower</td><td>Number</td><td>-1200 (W)</td><td>Real-time endpoint</td></tr>
-        <tr><td>lastUpdateTime</td><td>Date</td><td>"2026-06-23T14:30:00Z"</td><td>Server timestamp</td></tr>
+        <tr><td>generationPower</td><td>Number (W)</td><td>45200</td><td>Real-time endpoint</td></tr>
+        <tr><td>generationValue</td><td>Number (kWh)</td><td>312.5</td><td>Real-time endpoint</td></tr>
+        <tr><td>batterySOC</td><td>Number (%)</td><td>67</td><td>Inverter telemetry</td></tr>
+        <tr><td>gridPower</td><td>Number (W)</td><td>-1200</td><td>Real-time endpoint</td></tr>
+        <tr><td>lastUpdateTime</td><td>ISO 8601</td><td>2026-06-23T14:30:00Z</td><td>Server timestamp</td></tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<!-- ==================== SAFEGUARDS ==================== -->
+<!-- ==================== DASHBOARD INTERFACE ==================== -->
 <div class="page page-break">
-  <div class="section-bar">
-    <div class="num">08</div>
-    <h2>Technical Safeguards</h2>
+  <div class="section-header">
+    <div class="num">06</div>
+    <h2>Dashboard Interface</h2>
   </div>
 
-  <p class="lead">Making this look simple meant solving these real problems under the hood.</p>
+  <p class="lead">The operational dashboard provides fleet-wide visibility, per-site drill-down, historical trend analysis, and alarm management in a single interface.</p>
 
-  <div class="table-wrapper">
+  <div class="ascii-box">
+<span class="a-title">GWE SolarPulse — Live Operations Dashboard</span>
+
+ ┌────────────────────────────────────────────────────────────────────────────┐
+ │  <span class="a-white">GWE SOLARPULSE</span>                                              🔔  👤 │
+ ├────────────────────────────────────────────────────────────────────────────┤
+ │                                                                            │
+ │  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐                       │
+ │  │ <span class="a-blue">Total</span>   │  │ <span class="a-green">Today</span>   │  │ <span class="a-yellow">Battery</span> │  │ <span class="a-blue">Grid</span>    │                       │
+ │  │ Plants  │  │ Yield   │  │ Avg SOC │  │ Import  │                       │
+ │  │   <span class="a-white">12</span>    │  │ <span class="a-white">3,842</span>   │  │   <span class="a-white">62%</span>   │  │  <span class="a-white">1.2 MW</span> │                       │
+ │  └─────────┘  └─────────┘  └─────────┘  └─────────┘                       │
+ │                                                                            │
+ │  ┌──────────────────────────────────────────────────────────────────────┐  │
+ │  │  <span class="a-white">PLANT</span>                        <span class="a-white">POWER</span>    <span class="a-white">TODAY</span>    <span class="a-white">BATTERY</span>   <span class="a-white">STATUS</span>    │  │
+ │  ├──────────────────────────────────────────────────────────────────────┤  │
+ │  │  GWE Site A — Lagos           45.2 kW   312 kWh    67%     <span class="a-green">● Online</span>  │  │
+ │  │  GWE Site B — Abuja           28.1 kW   198 kWh    54%     <span class="a-green">● Online</span>  │  │
+ │  │  GWE Site C — PH              12.7 kW    89 kWh    23%     <span class="a-yellow">● Alarm</span>   │  │
+ │  │  GWE Site D — Ibadan          33.5 kW   241 kWh    71%     <span class="a-green">● Online</span>  │  │
+ │  │  GWE Site E — Kano             8.2 kW    56 kWh    12%     <span class="a-red">● Offline</span> │  │
+ │  └──────────────────────────────────────────────────────────────────────┘  │
+ │                                                                            │
+ │  ┌──────────────────────────────────────────────────────────────────────┐  │
+ │  │  <span class="a-white">ENERGY PRODUCTION — LAST 30 DAYS</span>                                    │  │
+ │  │                                                                       │  │
+ │  │  400 ┤                  ▄▄                                           │  │
+ │  │  350 ┤       ▄▄       ██       ▄▄           ▄▄                      │  │
+ │  │  300 ┤  ▄▄  ██ ██  ▄▄ ██ ██  ▄█ ██  ▄▄    ██ ██  ▄▄               │  │
+ │  │  250 ┤  ██  ██ ██  ██ ██ ██  ██ ██  ██ ▄▄ ██ ██  ██ ▄▄            │  │
+ │  │  200 ┤  ██  ██ ██  ██ ██ ██  ██ ██  ██ ██ ██ ██  ██ ██ ▄▄  ▄▄    │  │
+ │  │      └──────────────────────────────────────────────────────        │  │
+ │  │       1   5    10   15   20   25   30                                │  │
+ │  └──────────────────────────────────────────────────────────────────────┘  │
+ │                                                                            │
+ └────────────────────────────────────────────────────────────────────────────┘
+  </div>
+
+  <div class="card-grid-4" style="margin-top:20px;">
+    <div class="card card-sky" style="padding:18px;">
+      <h5 style="font-size:13px;">Live Fleet Grid</h5>
+      <p style="font-size:12px;">All plants at a glance with real-time generation, battery, and grid status</p>
+    </div>
+    <div class="card card-teal" style="padding:18px;">
+      <h5 style="font-size:13px;">Analytics Charts</h5>
+      <p style="font-size:12px;">Daily, monthly, yearly energy production with zoom and CSV export</p>
+    </div>
+    <div class="card card-amber" style="padding:18px;">
+      <h5 style="font-size:13px;">Alarm Console</h5>
+      <p style="font-size:12px;">Persistent alarm log with correlation to device telemetry and operational changes</p>
+    </div>
+    <div class="card card-violet" style="padding:18px;">
+      <h5 style="font-size:13px;">Device Drill-Down</h5>
+      <p style="font-size:12px;">Per-inverter metrics: voltage, current, temperature, fault history</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== RISK MITIGATION ==================== -->
+<div class="page page-break">
+  <div class="section-header">
+    <div class="num">07</div>
+    <h2>Risk Mitigation & Safeguards</h2>
+  </div>
+
+  <p class="lead">The system is designed to degrade gracefully under failure conditions. No single point of failure blocks the entire fleet. Each safeguard is implemented and tested.</p>
+
+  <div class="table-wrap">
     <table>
       <thead>
-        <tr><th>Challenge</th><th>How We Solved It</th><th>Severity</th></tr>
+        <tr><th>Risk Factor</th><th>Mitigation</th><th>Severity</th></tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong>Solarman tokens expire silently</strong></td>
-          <td>Multi-source auto-extraction pipeline with graceful fallback</td>
+          <td><strong>Solarman token expiration</strong></td>
+          <td>Multi-source auto-extraction with heuristic detection and graceful fallback to secondary tokens</td>
           <td><span class="pill pill-critical">Critical</span></td>
         </tr>
         <tr>
-          <td><strong>API rate limits (15 req/min)</strong></td>
-          <td>Intelligent request queuing + staggered dispatch</td>
+          <td><strong>API rate limiting (15 req/min)</strong></td>
+          <td>Intelligent request queuing with staggered dispatch and token pool rotation</td>
           <td><span class="pill pill-high">High</span></td>
         </tr>
         <tr>
-          <td><strong>Response shapes vary across endpoints</strong></td>
-          <td>Normalizer maps all variants to a single canonical model</td>
+          <td><strong>Inconsistent API responses</strong></td>
+          <td>Schema normalizer maps all endpoint variants to a single canonical model</td>
           <td><span class="pill pill-high">High</span></td>
         </tr>
         <tr>
-          <td><strong>Network timeouts & interruptions</strong></td>
-          <td>Retry with exponential backoff + partial success persistence</td>
+          <td><strong>Network interruption</strong></td>
+          <td>Exponential backoff retry with partial success persistence — never lose partial data</td>
           <td><span class="pill pill-moderate">Moderate</span></td>
         </tr>
         <tr>
-          <td><strong>Device timestamps drift</strong></td>
-          <td>Server-side time anchoring</td>
+          <td><strong>Device timestamp drift</strong></td>
+          <td>Server-side time anchoring — all records normalized to UTC at ingestion</td>
           <td><span class="pill pill-moderate">Moderate</span></td>
         </tr>
         <tr>
-          <td><strong>Duplicate records from repeated syncs</strong></td>
-          <td>Idempotent upsert logic (safe to run multiple times)</td>
+          <td><strong>Duplicate records</strong></td>
+          <td>Idempotent upserts — safe to re-run any sync cycle without data corruption</td>
           <td><span class="pill pill-moderate">Moderate</span></td>
         </tr>
         <tr>
-          <td><strong>Live + history must coexist</strong></td>
-          <td>In-memory cache for live, indexed queries for history</td>
+          <td><strong>Live vs. history query conflict</strong></td>
+          <td>In-memory hot cache for live data; indexed cold storage for historical queries</td>
           <td><span class="pill pill-moderate">Moderate</span></td>
         </tr>
         <tr>
-          <td><strong>One plant failure blocks others</strong></td>
-          <td>Per-plant error isolation + graceful degradation</td>
+          <td><strong>Single plant failure cascades</strong></td>
+          <td>Per-plant error isolation — one failed feed does not block the sync engine</td>
           <td><span class="pill pill-moderate">Moderate</span></td>
         </tr>
       </tbody>
@@ -1345,94 +1293,125 @@ tbody tr:nth-child(even) { background: #F8FAFC; }
   </div>
 </div>
 
-<!-- ==================== DELIVERABLES ==================== -->
+<!-- ==================== DEPLOYMENT READINESS ==================== -->
 <div class="page page-break">
-  <div class="section-bar">
-    <div class="num">09</div>
-    <h2>Deliverables Status</h2>
+  <div class="section-header">
+    <div class="num">08</div>
+    <h2>Deployment Readiness</h2>
   </div>
 
-  <div class="table-wrapper">
+  <p class="lead">The system is built and tested. What remains is production deployment, fleet-wide configuration, and operational handover.</p>
+
+  <h3>Deliverables Status</h3>
+  <div class="table-wrap">
     <table>
       <thead>
         <tr><th>Deliverable</th><th>Status</th><th>Notes</th></tr>
       </thead>
       <tbody>
-        <tr><td>Solarman API integration</td><td><span class="pill pill-moderate">Complete</span></td><td>Authenticated, connected</td></tr>
+        <tr><td>Solarman API integration</td><td><span class="pill pill-moderate">Complete</span></td><td>Authenticated, connected, tested</td></tr>
         <tr><td>Plant sync engine</td><td><span class="pill pill-moderate">Complete</span></td><td>All plants discovered and syncing</td></tr>
         <tr><td>Real-time data pipeline</td><td><span class="pill pill-moderate">Complete</span></td><td>Generation, battery, grid, load</td></tr>
         <tr><td>Device inventory & telemetry</td><td><span class="pill pill-moderate">Complete</span></td><td>Inverters, loggers, meters</td></tr>
-        <tr><td>Data persistence (history)</td><td><span class="pill pill-moderate">Complete</span></td><td>Survives restarts</td></tr>
+        <tr><td>Data persistence (history)</td><td><span class="pill pill-moderate">Complete</span></td><td>Survives restarts, idempotent</td></tr>
         <tr><td>REST API</td><td><span class="pill pill-moderate">Complete</span></td><td>Full endpoints for stations, devices, alarms</td></tr>
         <tr><td>SSE real-time push</td><td><span class="pill pill-moderate">Complete</span></td><td>Dashboard auto-updates</td></tr>
         <tr><td>Dashboard — live grid</td><td><span class="pill pill-moderate">Built</span></td><td>Plant overview with KPIs</td></tr>
         <tr><td>Dashboard — analytics charts</td><td><span class="pill pill-moderate">Built</span></td><td>Daily, monthly, yearly views</td></tr>
         <tr><td>Dashboard — alarm console</td><td><span class="pill pill-moderate">Built</span></td><td>Real-time alarm feed</td></tr>
         <tr><td>Dashboard — navigation</td><td><span class="pill pill-moderate">Built</span></td><td>Responsive sidebar layout</td></tr>
-        <tr><td>Deployment</td><td><span class="pill pill-sky">Ready</span></td><td>Server requirements known, config ready</td></tr>
-        <tr><td>Operations training</td><td><span class="pill pill-sky">Pending</span></td><td>2 sessions for the GWE team</td></tr>
+        <tr><td>Production deployment</td><td><span class="pill pill-sky">Ready</span></td><td>Server requirements known, config ready</td></tr>
+        <tr><td>Operations training</td><td><span class="pill pill-sky">Pending</span></td><td>2 sessions for GWE team</td></tr>
       </tbody>
     </table>
   </div>
+
+  <h3>Infrastructure Requirements</h3>
+  <div class="card-grid">
+    <div class="card card-sky">
+      <div class="card-icon">🖥</div>
+      <h5>Server</h5>
+      <p><strong>2 vCPU, 4 GB RAM, 50 GB SSD</strong></p>
+      <p style="margin-top:6px;">Hosts application, sync engine, and MongoDB. Sufficient for current fleet scale with headroom for growth.</p>
+    </div>
+    <div class="card card-teal">
+      <div class="card-icon">🌐</div>
+      <h5>Network</h5>
+      <p><strong>Static IP or DNS, outbound HTTPS</strong></p>
+      <p style="margin-top:6px;">Required for uninterrupted Solarman API connectivity. No inbound ports needed.</p>
+    </div>
+    <div class="card card-amber">
+      <div class="card-icon">🔑</div>
+      <h5>API Access</h5>
+      <p><strong>Solarman API credentials</strong></p>
+      <p style="margin-top:6px;">Already connected and operational. Verification required for fleet-wide expansion.</p>
+    </div>
+    <div class="card card-violet">
+      <div class="card-icon">📈</div>
+      <h5>Monitoring (Optional)</h5>
+      <p><strong>Uptime monitoring service</strong></p>
+      <p style="margin-top:6px;">Recommended for production. Alerts if sync engine stops or data flow interrupts.</p>
+    </div>
+  </div>
 </div>
 
-<!-- ==================== NEXT STEPS ==================== -->
+<!-- ==================== IMPLEMENTATION ROADMAP ==================== -->
 <div class="page page-break">
-  <div class="section-bar">
-    <div class="num">10</div>
-    <h2>What Comes Next</h2>
+  <div class="section-header">
+    <div class="num">09</div>
+    <h2>Implementation Roadmap</h2>
   </div>
 
-  <p class="lead">We have the code. We have the API. We have the pipeline. The only thing left is to put it on a server and hand GWE the keys.</p>
+  <p class="lead">The path from current pilot state to full operational deployment. Each phase has defined entry criteria, deliverables, and exit criteria.</p>
 
   <div class="timeline">
     <div class="timeline-item done">
-      <h5>System Built & API Connected</h5>
-      <p>Sync engine, database, REST API, SSE layer, and dashboard are all complete. Solarman API tokens are active and pulling data.</p>
-      <span class="tag tag-done">Completed</span>
+      <h5>System Development & API Integration</h5>
+      <p>Sync engine, database schema, REST API, SSE layer, and dashboard UI developed and integrated with Solarman API. End-to-end data flow validated.</p>
+      <span class="tag tag-done">Complete</span>
     </div>
     <div class="timeline-item done">
-      <h5>Single-Plant Pilot Validation</h5>
-      <p>Full sync cycle tested on one plant. Data accuracy verified. Field mapping confirmed. Rollups are correct.</p>
-      <span class="tag tag-done">Completed</span>
+      <h5>Pilot Validation — Single Plant</h5>
+      <p>Full sync cycle executed on one plant. Data accuracy verified against Solarman raw output. Field mapping confirmed. Rollup calculations validated.</p>
+      <span class="tag tag-done">Complete</span>
     </div>
     <div class="timeline-item next">
-      <h5>Fleet-Wide Rollout</h5>
-      <p>Expand sync profiles to all stations in the GWE portfolio. Each plant gets its own configuration-driven sync profile.</p>
-      <span class="tag tag-next">Next Up</span>
+      <h5>Fleet-Wide Configuration</h5>
+      <p>Deploy sync profiles for all GWE stations. Per-plant configuration validation. Data quality monitoring for 72 hours post-deployment.</p>
+      <span class="tag tag-next">Next Phase</span>
     </div>
     <div class="timeline-item pending">
-      <h5>Historical Backfill</h5>
-      <p>Pull historical data from Solarman for trend baselines. Populate daily/monthly/yearly rollups retroactively where available.</p>
+      <h5>Historical Data Backfill</h5>
+      <p>Extract available historical data from Solarman to establish trend baselines. Populate daily, monthly, and yearly rollups retroactively.</p>
       <span class="tag tag-pending">Pending</span>
     </div>
     <div class="timeline-item pending">
-      <h5>Team Training & Handover</h5>
-      <p>Two hands-on sessions for the GWE operations team. Dashboard, alarms, reporting, admin panel — all covered.</p>
+      <h5>Operational Training & Handover</h5>
+      <p>Two structured training sessions for GWE operations team. Dashboard navigation, alarm response, report generation, and admin functions.</p>
       <span class="tag tag-pending">Pending</span>
     </div>
     <div class="timeline-item pending">
-      <h5>Go-Live & Support Window</h5>
-      <p>2 months of post-launch support included. Bug fixes, data corrections, tweaks as the fleet scales.</p>
+      <h5>Production Support Window</h5>
+      <p>60-day post-launch support period. Bug fixes, data corrections, performance tuning, and operational adjustments as the fleet scales.</p>
       <span class="tag tag-pending">Pending</span>
     </div>
   </div>
 
-  <div class="highlight-box" style="margin-top:32px;">
-    <h3>What GWE Needs to Provide</h3>
-    <p style="margin-bottom:0;">1. Confirm the full plant list to connect<br>2. Verify Solarman API tokens are still valid for all stations<br>3. Give the green light — deployment begins within 2–3 days</p>
+  <div class="dark-box" style="margin-top:32px;">
+    <h3>Entry Criteria for Fleet Deployment</h3>
+    <p>1. Confirmation of complete plant inventory for GWE portfolio<br>2. Verification of Solarman API token validity across all stations<br>3. Green light from GWE operations leadership — deployment begins within 48 hours</p>
   </div>
 
   <div class="quote" style="margin-top:24px;">
-    "We're ready when GWE is. The system is built. The API is connected. Let's get the fleet data where it belongs — persistent, queryable, and always available."
+    "The system is built. The API is connected. The data pipeline is operational. We are ready to deploy across the full GWE fleet upon confirmation of the plant inventory and API access."
   </div>
 </div>
 
 <!-- ==================== FOOTER ==================== -->
 <div class="footer">
-  <p><strong>Divine Shedrack</strong> — Engineering Lead &nbsp;|&nbsp; <strong>Great Itodo</strong> — Frontend & UX</p>
-  <p style="margin-top:6px;">Prepared for GWE Operations & Engineering Team | GWE SolarPulse | June 2026</p>
-  <p style="margin-top:10px; color:#94A3B8; font-size:10px;">Full technical documentation, source code, and deployment runbooks maintained separately.</p>
+  <p><strong>Divine Shedrack</strong> — Engineering Lead &nbsp;|&nbsp; <strong>Great Itodo</strong> — Frontend & Systems Design</p>
+  <p style="margin-top:6px;">Prepared for GWE Operations & Abara Advisory | June 2026</p>
+  <p style="margin-top:10px; color:#94A3B8; font-size:10px;">Full technical documentation, source code repository, and deployment runbooks maintained separately and available upon request.</p>
 </div>
 
 </body>
